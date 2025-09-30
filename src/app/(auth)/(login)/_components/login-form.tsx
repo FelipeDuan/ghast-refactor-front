@@ -9,8 +9,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-import { AppleSvg } from '../../../../components/svg/apple';
-import { GoogleSvg } from '../../../../components/svg/google-svg';
+import { SocialLogin } from './social-login';
 
 export function LoginForm({
   className,
@@ -26,27 +25,16 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
-            <div className="grid gap-6">
-              <div className="flex flex-col gap-4">
-                <Button variant="outline" className="text-foreground/90 w-full">
-                  <AppleSvg />
-                  Entrar com Apple
-                </Button>
-                <Button
-                  type="button"
-                  variant={'outline'}
-                  className="text-foreground/90 w-full"
-                >
-                  <GoogleSvg />
-                  Entrar com o google
-                </Button>
-              </div>
-              <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                <span className="bg-card text-muted-foreground relative z-10 px-2">
-                  Ou continue com
-                </span>
-              </div>
+          <div className="grid gap-6">
+            <div className="flex flex-col gap-4">
+              <SocialLogin />
+            </div>
+            <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+              <span className="bg-card text-muted-foreground relative z-10 px-2">
+                Ou continue com
+              </span>
+            </div>
+            <form>
               <div className="grid gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
@@ -76,8 +64,8 @@ export function LoginForm({
                   Criar conta
                 </Button>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </CardContent>
       </Card>
     </div>

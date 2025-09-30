@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Figtree } from 'next/font/google';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Ghast Consultancy',
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${figtree.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }
