@@ -1,11 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { AppleSvg } from '@/components/svg/apple';
 import { GoogleSvg } from '@/components/svg/google-svg';
 import { Button } from '@/components/ui/button';
 import { notify } from '@/lib/notify';
 
 export function SocialLogin() {
+  const router = useRouter();
+
   async function handleClickAppleLogin() {
     const req = new Promise(resolve => setTimeout(resolve, 1200));
 
@@ -14,6 +17,8 @@ export function SocialLogin() {
       success: 'Pronto! Login com Apple concluído.',
       error: 'Não foi possível entrar com Apple.',
     });
+
+    router.push('/dashboard');
   }
 
   function handleClickGoogleLogin() {
@@ -24,6 +29,8 @@ export function SocialLogin() {
       success: 'Pronto! Login com Google concluído.',
       error: 'Não foi possível entrar com Google.',
     });
+
+    router.push('/dashboard');
   }
 
   return (
