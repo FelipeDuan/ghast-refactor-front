@@ -1,3 +1,8 @@
+'use client';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -6,15 +11,41 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { SocialLogin } from './social-login';
+
+const formSchema = z.object({
+  email: z.email('Email inválido.'),
+  password: z.string('Senha inválida').min(6, 'Mínimo de 6 caracteres'),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+
+  function onSubmit(values: FormValues) {
+    console.log(values);
+  }
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -34,37 +65,64 @@ export function LoginForm({
                 Ou continue com
               </span>
             </div>
-            <form>
-              <div className="grid gap-6">
-                <div className="grid gap-3">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="email@exemplo.com"
-                    required
-                  />
-                </div>
-                <div className="grid gap-3">
-                  <Label htmlFor="password">Senha</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Digite sua senha"
-                    required
-                  />
-                </div>
+
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="grid gap-6"
+              >
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="email@exemplo.com"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => {
+                    return (
+                      <FormItem>
+                        <FormLabel>Senha</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="password"
+                            placeholder="Digite sua senha"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
+                />
+
                 <Button type="submit" className="w-full">
                   Login
                 </Button>
-              </div>
-              <div className="text-center text-sm">
-                Ainda não tem uma conta?
-                <Button variant={'link'} className="px-2">
-                  Criar conta
-                </Button>
-              </div>
-            </form>
+              </form>
+            </Form>
+
+            <div className="text-center text-sm">
+              Ainda não tem uma conta?
+              <Button variant={'link'} className="px-2">
+                Criar conta
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
