@@ -4,6 +4,12 @@ import { Button } from '@/components/ui/button';
 
 type Base = { title?: string; description?: string };
 
+type NotifyMessages<T = unknown> = {
+  loading: React.ReactNode;
+  success: React.ReactNode | ((data: T) => React.ReactNode);
+  error: React.ReactNode | ((err: unknown) => React.ReactNode);
+};
+
 export const notify = {
   info: (o: Base) => {
     toast.info(o.title ?? 'Tudo certo', {
@@ -33,15 +39,9 @@ export const notify = {
     });
   },
 
-  promise<T>(
-    p: Promise<T>,
-    msgs: { loading: string; success: string; error: string }
-  ) {
-    return toast.promise(p, {
-      loading: msgs.loading,
-      success: msgs.success,
-      error: msgs.error,
-    });
+  async promise<T>(p: Promise<T>, msgs: NotifyMessages<T>): Promise<T> {
+    toast.promise(p, msgs);
+    return await p;
   },
 
   custom(opts: {

@@ -10,32 +10,39 @@ export function SocialLogin() {
   const router = useRouter();
 
   async function handleClickAppleLogin() {
-    const req = new Promise(resolve => setTimeout(resolve, 1200));
+    const req = new Promise<string>(resolve =>
+      setTimeout(() => resolve('ok-apple'), 2500)
+    );
 
-    notify.promise(req, {
+    const result = await notify.promise(req, {
       loading: 'Conectando com a Apple…',
       success: 'Pronto! Login com Apple concluído.',
       error: 'Não foi possível entrar com Apple.',
     });
 
+    console.log('Resultado Apple:', result);
     router.push('/dashboard');
   }
 
-  function handleClickGoogleLogin() {
-    const req = new Promise(resolve => setTimeout(resolve, 1200));
+  async function handleClickGoogleLogin() {
+    const req = new Promise<{ token: string; user: string }>(resolve =>
+      setTimeout(() => resolve({ token: 'abc123', user: 'Felipe Duan' }), 2500)
+    );
 
-    notify.promise(req, {
+    const { token, user } = await notify.promise(req, {
       loading: 'Conectando com o Google…',
-      success: 'Pronto! Login com Google concluído.',
+      success: ({ user }) => `Bem-vindo, ${user}!`,
       error: 'Não foi possível entrar com Google.',
     });
 
+    console.log('Resultado Google:', token, user);
     router.push('/dashboard');
   }
 
   return (
     <>
       <Button
+        type="button"
         variant="outline"
         onClick={handleClickAppleLogin}
         className="text-foreground/90 w-full"
