@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ModeToggle } from '@/components/theming/mode-toogle';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,7 +10,7 @@ import { notify } from '@/lib/notify';
 
 export default function ToastLab() {
   return (
-    <div className="mx-auto mt-6 w-full max-w-xl space-y-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+    <div className="bg-card border-border mx-auto mt-6 w-full max-w-xl space-y-8 rounded-2xl border p-6 backdrop-blur">
       <Header />
       <BasicToasts />
       <PromiseToasts />
@@ -20,11 +21,14 @@ export default function ToastLab() {
 
 function Header() {
   return (
-    <div className="space-y-1">
-      <h2 className="text-lg font-semibold">Toast Lab</h2>
-      <p className="text-foreground/70 text-sm">
-        Clique para disparar cada variação do <code>notify</code>.
-      </p>
+    <div className="flex items-center justify-between">
+      <div className="space-y-1">
+        <h2 className="text-lg font-semibold">Toast Lab</h2>
+        <p className="text-foreground/70 text-sm">
+          Clique para disparar cada variação do <code>notify</code>.
+        </p>
+      </div>
+      <ModeToggle />
     </div>
   );
 }

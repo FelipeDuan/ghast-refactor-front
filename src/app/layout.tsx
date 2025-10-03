@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Figtree } from 'next/font/google';
 import { Toaster } from 'sonner';
+import { Providers } from '@/components/providers';
 
 export const metadata: Metadata = {
   title: 'Ghast Consultancy',
@@ -20,10 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${figtree.variable}`}>
+    <html
+      lang="pt-BR"
+      className={`${figtree.variable}`}
+      suppressHydrationWarning
+    >
       <body>
-        <Toaster position="top-center" richColors />
-        {children}
+        <Providers>
+          <Toaster position="top-center" richColors closeButton />
+          {children}
+        </Providers>
       </body>
     </html>
   );
