@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { SignInForm } from '@/components/auth/sign-in-form';
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -37,13 +35,6 @@ export function LoginForm({
             </div>
 
             <SignInForm />
-
-            <div className="text-center text-sm">
-              Ainda não tem uma conta?
-              <Button variant={'link'} className="px-2" asChild>
-                <Link href={`/register`}>Criar conta</Link>
-              </Button>
-            </div>
           </div>
         </CardContent>
       </Card>

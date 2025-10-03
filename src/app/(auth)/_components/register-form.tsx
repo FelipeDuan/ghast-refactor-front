@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { SignUpForm } from '@/components/auth/sign-up-form';
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -26,13 +24,6 @@ export function RegisterForm({
         <CardContent>
           <div className="grid gap-4">
             <SignUpForm />
-
-            <div className="text-center text-sm">
-              Já possui uma conta?
-              <Button variant={'link'} className="px-2" asChild>
-                <Link href={`/login`}>Entrar</Link>
-              </Button>
-            </div>
           </div>
         </CardContent>
       </Card>
