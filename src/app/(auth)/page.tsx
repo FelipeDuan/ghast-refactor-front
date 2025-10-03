@@ -11,7 +11,7 @@ export default function AuthenticationPage() {
         <Link
           href="https://github.com/FelipeDuan"
           target="_blank"
-          className="text-primary-foreground flex items-center gap-2 self-center font-semibold"
+          className="flex items-center gap-2 self-center font-semibold text-white"
         >
           <div className="bg-primary flex size-6 items-center justify-center rounded-md">
             <GalleryVerticalEnd className="size-4" />
