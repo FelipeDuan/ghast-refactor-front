@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${figtree.variable}`}>
       <body>
-        <Toaster />
+        <Toaster position="top-center" richColors />
         {children}
       </body>
     </html>
