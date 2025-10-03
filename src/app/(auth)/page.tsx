@@ -20,7 +20,7 @@ export default function AuthenticationPage() {
         </Link>
 
         <Tabs defaultValue="sign-in">
-          <TabsList>
+          <TabsList className="flex w-full justify-center">
             <TabsTrigger value="sign-in">Entrar</TabsTrigger>
             <TabsTrigger value="sign-up">Criar conta</TabsTrigger>
           </TabsList>
