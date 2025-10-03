@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { notify } from '@/lib/notify';
 import { Button } from '../ui/button';
 import {
   Form,
@@ -48,8 +49,11 @@ export function SignUpForm() {
 
   function onSubmit(values: FormValues) {
     console.log(values);
-
     form.reset();
+    notify.success({
+      title: 'Conta criada com sucesso',
+      description: 'Agora realize o login com seus dados',
+    });
   }
 
   return (

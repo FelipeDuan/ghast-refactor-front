@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { notify } from '@/lib/notify';
 
 const formSchema = z.object({
   email: z.email('Email inválido.'),
@@ -22,6 +24,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export function SignInForm() {
+  const router = useRouter();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,6 +35,11 @@ export function SignInForm() {
 
   function onSubmit(values: FormValues) {
     console.log(values);
+    form.reset();
+    router.push('/dashboard');
+    notify.success({
+      title: 'Login realizado com sucesso',
+    });
   }
 
   return (

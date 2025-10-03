@@ -18,7 +18,7 @@ export function RegisterForm({
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Bem-vindo(a) à Ghast!</CardTitle>
           <CardDescription>
-            Preencha com suas informações de login
+            Informe seus dados para criar uma conta
           </CardDescription>
         </CardHeader>
         <CardContent>
