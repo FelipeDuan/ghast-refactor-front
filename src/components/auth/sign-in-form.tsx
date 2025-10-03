@@ -78,7 +78,7 @@ export function SignInForm() {
         />
 
         <Button type="submit" className="w-full">
-          Login
+          Entrar
         </Button>
       </form>
     </Form>
