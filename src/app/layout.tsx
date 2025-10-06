@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Figtree, Plus_Jakarta_Sans } from 'next/font/google';
+import { Figtree, Geist } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { Providers } from '@/components/providers';
 
@@ -14,7 +14,7 @@ export const figtree = Figtree({
   weight: ['400', '500', '700'],
   variable: '--font-figtree',
 });
-export const plusJakartaSans = Plus_Jakarta_Sans({
+export const geist = Geist({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-sans',
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${figtree.variable} ${plusJakartaSans.variable} antialiased`}
+      className={`${figtree.variable} ${geist.variable} antialiased`}
       suppressHydrationWarning
     >
       <body>
