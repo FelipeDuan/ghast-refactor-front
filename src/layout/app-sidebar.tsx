@@ -47,7 +47,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Painel Principal</SidebarGroupLabel>
           <SidebarContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-1.5 p-1">
               {items.map(item => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarButton href={item.url}>
