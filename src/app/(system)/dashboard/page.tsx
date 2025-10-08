@@ -12,7 +12,7 @@ import { PageHeader } from '@/layout/page-header';
 export default function DashboardPage() {
   return (
     <>
-      <PageHeader />
+      <PageHeader pageName="Dashboard" />
       <div className="p-6">
         <Card className="w-full">
           <CardHeader>
