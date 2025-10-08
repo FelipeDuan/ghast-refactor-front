@@ -12,8 +12,8 @@ export function GhastLogo() {
         shimmerColor="var(--color-foreground)"
         duration={1.5}
         repeatDelay={1}
-        once
         repeat={false}
+        once
       />
     </div>
   );
