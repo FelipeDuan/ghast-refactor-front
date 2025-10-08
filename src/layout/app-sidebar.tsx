@@ -10,6 +10,8 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { SidebarButton } from '@/components/ui/sidebar-button';
+import { DropdownUser } from './dropdown-user';
+import { GhastLogo } from './ghast-logo';
 
 const items = [
   {
@@ -42,7 +44,9 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader>Header</SidebarHeader>
+      <SidebarHeader>
+        <GhastLogo />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Painel Principal</SidebarGroupLabel>
@@ -60,7 +64,9 @@ export function AppSidebar() {
           </SidebarContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>Footer</SidebarFooter>
+      <SidebarFooter>
+        <DropdownUser />
+      </SidebarFooter>
     </Sidebar>
   );
 }
