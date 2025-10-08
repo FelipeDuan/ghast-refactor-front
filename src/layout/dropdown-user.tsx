@@ -1,5 +1,5 @@
 import { ChevronsUpDown } from 'lucide-react';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,6 +23,11 @@ export function DropdownUser() {
               className="group data-[state=open]:bg-accent data-[state=open]:text-accent-foreground dark:data-[state=open]:bg-accent/50 cursor-pointer transition"
             >
               <Avatar className="h-8 w-8 rounded-md">
+                <AvatarImage
+                  src={`https://avatars.githubusercontent.com/u/161091633?v=4`}
+                  alt="Imagem de Felipe Duan"
+                  className="rounded-md"
+                />
                 <AvatarFallback className="rounded-md">FD</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
