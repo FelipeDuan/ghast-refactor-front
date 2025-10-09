@@ -45,14 +45,12 @@ type ThemeTogglerButtonProps = React.ComponentProps<typeof Button> & {
   /** ---- opções de layout/UX ---- */
   withLabel?: boolean; // mostra texto ao lado do ícone
   label?: React.ReactNode; // texto custom
-  responsiveLabel?: boolean; // texto aparece só >= sm
   fullWidth?: boolean; // w-full
   alignStart?: boolean; // justify-start
   iconOnly?: boolean; // força modo ícone apenas
 };
 
 function ThemeTogglerButton({
-  // defaults para o SEU padrão desejado
   variant = 'ghost',
   size = 'default',
   modes = ['light', 'dark'],
@@ -63,7 +61,6 @@ function ThemeTogglerButton({
 
   withLabel = true,
   label = 'Alterar tema',
-  responsiveLabel = true,
   fullWidth = true,
   alignStart = true,
   iconOnly = false,
