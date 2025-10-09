@@ -1,4 +1,5 @@
 import { Activity, Bell, Folder, LayoutDashboard, Play } from 'lucide-react';
+import { ThemeTogglerButton } from '@/components/animate-ui/components/buttons/theme-toggler';
 import {
   Sidebar,
   SidebarContent,
@@ -65,6 +66,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
+        <ThemeTogglerButton />
         <DropdownUser />
       </SidebarFooter>
     </Sidebar>
