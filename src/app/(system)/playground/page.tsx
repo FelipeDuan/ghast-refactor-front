@@ -7,6 +7,13 @@ import { useForm } from 'react-hook-form';
 import z from 'zod';
 // se quiser testar o social login (o seu):
 import { SocialLogin } from '@/app/(auth)/_components/social-login';
+import {
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsPanels,
+  TabsTab,
+} from '@/components/animate-ui/components/base/tabs';
 // se quiser testar o toggle de tema:
 import { Button } from '@/components/ui/button';
 import {
@@ -32,7 +39,6 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { PageHeader } from '@/layout/page-header';
 import { notify } from '@/lib/notify';
 
@@ -109,193 +115,200 @@ export default function PlaygroundPage() {
 
         <Tabs defaultValue="buttons" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="buttons">Botões & Toasts</TabsTrigger>
-            <TabsTrigger value="dropdown">Dropdown</TabsTrigger>
-            <TabsTrigger value="form">Form</TabsTrigger>
-            <TabsTrigger value="auth">Social Login</TabsTrigger>
+            <TabsTab value="buttons">Botões & Toasts</TabsTab>
+            <TabsTab value="dropdown">Dropdown</TabsTab>
+            <TabsTab value="form">Form</TabsTab>
+            <TabsTab value="auth">Social Login</TabsTab>
           </TabsList>
 
           {/* --- BOTÕES & TOASTS --- */}
-          <TabsContent value="buttons" className="mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Buttons + Toaster</CardTitle>
-                <CardDescription>
-                  Teste variações de botões e notificações.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button onClick={handleSuccessToast}>
-                    <Check className="mr-2 size-4" />
-                    Sucesso
-                  </Button>
-                  <Button variant="secondary" onClick={handleInfoToast}>
-                    Info
-                  </Button>
-                  <Button variant="outline" onClick={handleWarningToast}>
-                    Warning
-                  </Button>
-                  <Button variant="destructive" onClick={handleErrorToast}>
-                    Erro
-                  </Button>
-                  <Button variant="ghost" onClick={handlePromiseToast}>
-                    {pending ? (
-                      <>
-                        <Loader2 className="mr-2 size-4 animate-spin" />
-                        Processando…
-                      </>
-                    ) : (
-                      'Promise Toast'
-                    )}
-                  </Button>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button>Default</Button>
-                  <Button variant="secondary">Secondary</Button>
-                  <Button variant="outline">Outline</Button>
-                  <Button variant="ghost">Ghost</Button>
-                  <Button disabled>
-                    <Loader2 className="mr-2 size-4 animate-spin" />
-                    Loading
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* --- DROPDOWN --- */}
-          <TabsContent value="dropdown" className="mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Dropdown Menu</CardTitle>
-                <CardDescription>
-                  Teste do seu componente de dropdown.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button>
-                      Ações <ChevronDown className="ml-2 size-4" />
+          <TabsPanels>
+            <TabsPanel value="buttons">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Buttons + Toaster</CardTitle>
+                  <CardDescription>
+                    Teste variações de botões e notificações.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button onClick={handleSuccessToast}>
+                      <Check className="mr-2 size-4" />
+                      Sucesso
                     </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="min-w-48">
-                    <DropdownMenuItem onClick={handleInfoToast}>
-                      Ver detalhes
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleSuccessToast}>
-                      Confirmar
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleWarningToast}>
-                      Aviso
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleErrorToast}>
+                    <Button variant="secondary" onClick={handleInfoToast}>
+                      Info
+                    </Button>
+                    <Button variant="outline" onClick={handleWarningToast}>
+                      Warning
+                    </Button>
+                    <Button variant="destructive" onClick={handleErrorToast}>
                       Erro
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* --- FORM --- */}
-          <TabsContent value="form" className="mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Form (react-hook-form + zod)</CardTitle>
-                <CardDescription>
-                  Formulário simples usando seus componentes.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="grid gap-4"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="voce@exemplo.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
+                    </Button>
+                    <Button variant="ghost" onClick={handlePromiseToast}>
+                      {pending ? (
+                        <>
+                          <Loader2 className="mr-2 size-4 animate-spin" />
+                          Processando…
+                        </>
+                      ) : (
+                        'Promise Toast'
                       )}
-                    />
+                    </Button>
+                  </div>
 
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <div className="flex items-center justify-between">
-                            <FormLabel>Senha</FormLabel>
-                            <Label className="text-muted-foreground text-xs">
-                              Mín. 6 caracteres
-                            </Label>
-                          </div>
-                          <FormControl>
-                            <Input
-                              type="password"
-                              placeholder="••••••••"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button>Default</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="outline">Outline</Button>
+                    <Button variant="ghost">Ghost</Button>
+                    <Button disabled>
+                      <Loader2 className="mr-2 size-4 animate-spin" />
+                      Loading
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsPanel>
 
-                    <div className="flex gap-3">
-                      <Button type="submit" disabled={pending}>
-                        {pending ? (
-                          <>
-                            <Loader2 className="mr-2 size-4 animate-spin" />
-                            Enviando…
-                          </>
-                        ) : (
-                          'Enviar'
+            {/* --- DROPDOWN --- */}
+            <TabsPanel value="dropdown">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Dropdown Menu</CardTitle>
+                  <CardDescription>
+                    Teste do seu componente de dropdown.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button>
+                        Ações <ChevronDown className="ml-2 size-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="min-w-48">
+                      <DropdownMenuItem onClick={handleInfoToast}>
+                        Ver detalhes
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleSuccessToast}>
+                        Confirmar
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleWarningToast}>
+                        Aviso
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={handleErrorToast}>
+                        Erro
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </CardContent>
+              </Card>
+            </TabsPanel>
+
+            {/* --- FORM --- */}
+            <TabsPanel value="form">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Form (react-hook-form + zod)</CardTitle>
+                  <CardDescription>
+                    Formulário simples usando seus componentes.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Form {...form}>
+                    <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="grid gap-4"
+                    >
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="voce@exemplo.com"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
                         )}
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={() => form.reset({ email: '', password: '' })}
-                      >
-                        Limpar
-                      </Button>
-                    </div>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
-          </TabsContent>
+                      />
 
-          {/* --- SOCIAL LOGIN --- */}
-          <TabsContent value="auth" className="mt-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Social Login</CardTitle>
-                <CardDescription>
-                  Testando o seu componente de login social.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <SocialLogin />
-                <div className="text-muted-foreground text-sm">
-                  Dica: altere o `notify.promise` para retornar a promise
-                  original e use `await` para controlar o redirect somente
-                  quando der sucesso.
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormItem>
+                            <div className="flex items-center justify-between">
+                              <FormLabel>Senha</FormLabel>
+                              <Label className="text-muted-foreground text-xs">
+                                Mín. 6 caracteres
+                              </Label>
+                            </div>
+                            <FormControl>
+                              <Input
+                                type="password"
+                                placeholder="••••••••"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <div className="flex gap-3">
+                        <Button type="submit" disabled={pending}>
+                          {pending ? (
+                            <>
+                              <Loader2 className="mr-2 size-4 animate-spin" />
+                              Enviando…
+                            </>
+                          ) : (
+                            'Enviar'
+                          )}
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() =>
+                            form.reset({ email: '', password: '' })
+                          }
+                        >
+                          Limpar
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+            </TabsPanel>
+
+            {/* --- SOCIAL LOGIN --- */}
+            <TabsPanel value="auth">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Social Login</CardTitle>
+                  <CardDescription>
+                    Testando o seu componente de login social.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <SocialLogin />
+                  <div className="text-muted-foreground text-sm">
+                    Dica: altere o `notify.promise` para retornar a promise
+                    original e use `await` para controlar o redirect somente
+                    quando der sucesso.
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsPanel>
+          </TabsPanels>
         </Tabs>
       </div>
     </>

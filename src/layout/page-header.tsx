@@ -1,4 +1,3 @@
-import { ModeToggle } from '@/components/theming/mode-toogle';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
@@ -15,7 +14,6 @@ export function PageHeader({ pageName }: PageHeaderProps) {
           <div className="bg-border h-8 w-px" />
           {pageName}
         </div>
-        <ModeToggle />
       </header>
       <Separator />
     </>
