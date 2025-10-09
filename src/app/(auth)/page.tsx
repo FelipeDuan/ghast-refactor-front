@@ -1,6 +1,12 @@
 import { GalleryVerticalEnd } from 'lucide-react';
 import Link from 'next/link';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsPanels,
+  TabsTab,
+} from '@/components/animate-ui/components/base/tabs';
 import { LoginForm } from './_components/login-form';
 import { RegisterForm } from './_components/register-form';
 
@@ -21,17 +27,19 @@ export default function AuthenticationPage() {
 
         <Tabs defaultValue="sign-in">
           <TabsList className="flex w-full justify-center">
-            <TabsTrigger value="sign-in">Entrar</TabsTrigger>
-            <TabsTrigger value="sign-up">Criar conta</TabsTrigger>
+            <TabsTab value="sign-in">Entrar</TabsTab>
+            <TabsTab value="sign-up">Criar conta</TabsTab>
           </TabsList>
 
-          <TabsContent value="sign-in">
-            <LoginForm />
-          </TabsContent>
+          <TabsPanels>
+            <TabsPanel value="sign-in">
+              <LoginForm />
+            </TabsPanel>
 
-          <TabsContent value="sign-up">
-            <RegisterForm />
-          </TabsContent>
+            <TabsPanel value="sign-up">
+              <RegisterForm />
+            </TabsPanel>
+          </TabsPanels>
         </Tabs>
       </div>
     </div>
