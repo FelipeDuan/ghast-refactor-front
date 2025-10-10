@@ -27,7 +27,7 @@ const items = [
   },
   {
     title: 'Notificações',
-    url: '#',
+    url: '/notificacoes',
     icon: Bell,
   },
   {

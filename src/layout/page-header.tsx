@@ -1,21 +1,55 @@
+import { Fragment } from 'react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
-interface PageHeaderProps {
-  pageName: string;
+interface BreadcrumbItemType {
+  label: string;
+  href?: string;
+  hiddenOnMobile?: boolean;
 }
 
-export function PageHeader({ pageName }: PageHeaderProps) {
+interface PageHeaderProps {
+  breadcrumbItems: BreadcrumbItemType[];
+}
+
+export function PageHeader({ breadcrumbItems }: PageHeaderProps) {
   return (
-    <>
-      <header className="flex w-full items-center justify-between px-6 py-4">
-        <div className="flex items-center justify-start gap-6 font-medium">
-          <SidebarTrigger />
-          <div className="bg-border h-8 w-px" />
-          {pageName}
-        </div>
-      </header>
-      <Separator />
-    </>
+    <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <SidebarTrigger className="-ml-1" />
+      <Separator orientation="vertical" className="mr-2 h-4" />
+
+      <Breadcrumb>
+        <BreadcrumbList>
+          {breadcrumbItems.map((item, index) => {
+            const isLast = index === breadcrumbItems.length - 1;
+            const className = item.hiddenOnMobile ? 'hidden md:block' : '';
+
+            return (
+              // biome-ignore lint/suspicious/noArrayIndexKey: < explanation>
+              <Fragment key={index}>
+                <BreadcrumbItem className={className}>
+                  {item.href && !isLast ? (
+                    <BreadcrumbLink href={item.href}>
+                      {item.label}
+                    </BreadcrumbLink>
+                  ) : (
+                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                  )}
+                </BreadcrumbItem>
+                {!isLast && <BreadcrumbSeparator className={className} />}
+              </Fragment>
+            );
+          })}
+        </BreadcrumbList>
+      </Breadcrumb>
+    </header>
   );
 }

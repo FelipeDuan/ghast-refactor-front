@@ -107,7 +107,12 @@ export default function PlaygroundPage() {
 
   return (
     <>
-      <PageHeader pageName="Laboratório Dev" />
+      <PageHeader
+        breadcrumbItems={[
+          { label: 'Início', href: '/dashboard', hiddenOnMobile: true },
+          { label: 'Playground' },
+        ]}
+      />
       <div className="min-h-screen w-full p-6">
         <div className="mb-6 flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold">UI Playground</h1>
@@ -115,7 +120,7 @@ export default function PlaygroundPage() {
 
         <Tabs defaultValue="buttons" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTab value="buttons">Botões & Toasts</TabsTab>
+            <TabsTab value="buttons">Botões</TabsTab>
             <TabsTab value="dropdown">Dropdown</TabsTab>
             <TabsTab value="form">Form</TabsTab>
             <TabsTab value="auth">Social Login</TabsTab>

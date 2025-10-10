@@ -19,7 +19,7 @@ import { PageHeader } from '@/layout/page-header';
 export default function DashboardPage() {
   return (
     <>
-      <PageHeader pageName="Dashboard" />
+      <PageHeader breadcrumbItems={[{ label: 'Início' }]} />
 
       <Tabs defaultValue={'estatistica'} className={'p-6'}>
         <TabsList>

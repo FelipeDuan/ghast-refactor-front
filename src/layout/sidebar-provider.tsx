@@ -1,4 +1,4 @@
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from './app-sidebar';
 
 interface SidebarProviderProps {
@@ -9,7 +9,7 @@ export function SidebarLayoutProvider({ children }: SidebarProviderProps) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full">{children}</main>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
 }
