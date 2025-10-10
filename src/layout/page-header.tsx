@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { SidebarTrigger } from '@/components/animate-ui/components/radix/sidebar';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +9,6 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 
 interface BreadcrumbItemType {
   label: string;

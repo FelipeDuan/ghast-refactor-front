@@ -1,4 +1,7 @@
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import {
+  SidebarInset,
+  SidebarProvider,
+} from '@/components/animate-ui/components/radix/sidebar';
 import { AppSidebar } from './app-sidebar';
 
 interface SidebarProviderProps {
