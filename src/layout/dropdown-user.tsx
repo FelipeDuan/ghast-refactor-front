@@ -1,5 +1,10 @@
 import { ChevronsUpDown } from 'lucide-react';
 import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/components/animate-ui/components/radix/sidebar';
+import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -12,11 +17,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from '@/components/ui/sidebar';
 
 export function DropdownUser() {
   return (

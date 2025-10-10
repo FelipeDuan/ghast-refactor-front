@@ -9,7 +9,7 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-} from '@/components/ui/sidebar';
+} from '@/components/animate-ui/components/radix/sidebar';
 import { SidebarButton } from '@/components/ui/sidebar-button';
 import { DropdownUser } from './dropdown-user';
 import { GhastLogo } from './ghast-logo';
@@ -27,7 +27,7 @@ const items = [
   },
   {
     title: 'Notificações',
-    url: '#',
+    url: '/notificacoes',
     icon: Bell,
   },
   {
