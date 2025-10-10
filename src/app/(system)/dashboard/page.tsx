@@ -6,6 +6,8 @@ import {
   TabsTab,
 } from '@/components/animate-ui/components/base/tabs';
 import AreaChart1 from '@/components/area-chart-1';
+import LineChart9 from '@/components/line-chart-9';
+import StatisticCard6 from '@/components/static-card';
 import {
   Card,
   CardAction,
@@ -24,6 +26,12 @@ export default function DashboardPage() {
 
       <div className="flex flex-col gap-6 p-6">
         <AreaChart1 />
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <LineChart9 />
+
+          <StatisticCard6 />
+        </div>
 
         <Tabs defaultValue={'estatistica'}>
           <TabsList>
